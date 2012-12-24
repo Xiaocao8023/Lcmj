@@ -1,0 +1,7 @@
+---
+layout: template
+title: Hellow world
+---
+<p>Hellow world</p>
+<p>测试gh-pges</p>
+<p>{{ page.date | date_to_string }}</p>

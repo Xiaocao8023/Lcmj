@@ -1,0 +1,75 @@
+<!DOCtype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf_8" />
+
+		<title>良辰美景</title>
+
+		<meta name="author" content="Xiaocao" />
+		<meta name="keywords" content="良辰美景,小曹,小曹8023娃娃,鲁西南大安庄,web前端,html,css,javascript,w3c,Linux,数据结构,算法" />
+		<meta name="description" content="为了纪念一个人 | Desert Remember" />
+
+		<link rel="shortcut icon" href=favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="./style/index.css" />
+	</head>
+<body>
+	<div class="nav">
+		<ul>	
+			<li><a href="./about.html" title="About Lcmj">About</a></li>
+			<li><a href="./code.html" title="My Codes">Code</a></li>
+			<li><a href="http://Blog.Xiaocao8023.com/" title="My Blogs">Blog</a></li>
+			<li><a href="./index.html" title="Index of">Index</a></li>
+		</ul>
+	</div>
+	<div class="logo">
+		<a href="./index.html"><img src="./images/logo.png" width="80px" height="80px;" alt="良辰美景" /></a>
+	</div>
+	<div class="content">
+		<div class="code_head">
+			<p style="text-align:left;text-indent:2em;line-height:1.5em;">
+				<span style="font-size:18px;color:#ff0000;"><span style="font-size:18px;color:#ff0000;font-family:宋体, simsun;">业</span><span style="font-size:20px;color:#ff0000;font-family:宋体, simsun;">余的,正在入门的web前端，</span></span>
+			</p>
+			<p style="text-align:left;text-indent:2em;line-height:1.5em;">
+				<span style="font-size:20px;font-family:宋体, simsun;color:#ffc000;">我自己的、</span><span style="font-size:20px;font-family:宋体, simsun;color:#ffc000;">参与的开源项目在这里</span><br />
+			</p>
+			<p style="text-align:left;text-indent:2em;line-height:1.5em;">
+				<span style="font-size:20px;font-family:宋体, simsun;color:#ffff00;">代码更新请看我的博客或Github</span>
+			</p>
+			<p style="text-align:left;text-indent:2em;line-height:1.5em;">
+				<span style="font-size:20px;font-family:宋体, simsun;color:#92d050;">我的Github  </span><span style="font-size:20px;text-decoration:underline;font-family:宋体, simsun;"><a href="http://github.com/xiaocao8023" target="_blank" title="小曹的Github" textvalue="http://github.com/xiaocao8023" style="font-size:20px;text-decoration:underline;color:#92d050;"><span style="font-size:20px;text-decoration:underline;font-family:宋体, simsun;color:#92d050;">http://github.com/xiaocao8023</span></a></span>
+			</p>
+		</div>
+		<div class="code_content">
+			<div class="code_tab">
+				<ul id="menu">
+					<li onmouseover="code_type(0);"><img src="./images/nav_tab_1.png" alt="我自己的" /></li>
+					<li onmouseover="code_type(1);"><img src="./images/nav_tab_2.png" alt="我参与的" /></li>
+				</ul>
+			</div>
+			<div class="code_content_1" id="code0">
+				我自己的
+			</div>
+			<div class="code_content_2" id="code1">
+				我参与的
+			</div>
+			<script type="text/javascript" language="javascript">
+				function code_type(n){
+					var code = document.getElementById("menu");
+					var code_li = menu.getElementsByTagName("li");
+					for(var i = 0; i < code_li.length; i++)
+					{
+						code_li[i].className= "";
+						code_li[n].className= "yes";
+						document.getElementById("code"+ i).className = "code_content_1";
+						document.getElementById("code"+ n).className = "code_content_2";
+					}
+				}
+			</script>
+		</div>
+	</div>
+	<div class="footer">
+		<p>&copy;&nbsp;2012&nbsp;&nbsp;<a href="./about.html" title="关于良辰美景">良辰美景</a></p>
+	</div>
+</body>
+
+</html>
