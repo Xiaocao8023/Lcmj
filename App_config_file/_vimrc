@@ -1,0 +1,161 @@
+"""""""""""""""""""""""""""""""
+""     the Config of Vim     ""
+""       Code by Desert      ""
+""Build:2012-11-23            "
+""Final:2012-12-15            "
+"""""""""""""""""""""""""""""""
+
+
+""Basic
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+filetype on
+filetype plugin on
+filetype indent on
+filetype plugin indent on
+set rtp+=~/.vim/bundle/vundle
+
+
+""General
+set clipboard+=unnamed
+
+syntax on
+syntax enable
+set mouse=a
+set mousehide
+scriptencoding utf-8
+
+set history=640
+set spell
+set autoread
+set autowrite
+set hidden
+
+set confirm
+set backup
+
+set showmode
+set cursorline
+set number
+set magic
+
+if has('cmdline_info')
+	set ruler
+	set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+	set showcmd
+endif
+
+if has('statusline')
+	set laststatus=2
+	set statusline=%<%f\
+	set statusline+=%w%h%m%r
+	set statusline+=\ [%{&ff}/%Y]
+	set statusline+=\ [%{getcwd()}]
+	set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+endif
+
+set backspace=indent,eol,start
+set linespace=0
+set showmatch
+set incsearch
+set hlsearch
+set winminheight=0
+set ignorecase
+set smartcase
+
+set whichwrap=b,s,h,l,<,>,[,]
+set scrolljump=5
+set scrolloff=3
+set foldenable
+set foldmethod=syntax
+"set list
+
+
+""Format
+set nowrap
+set autoindent
+set cindent
+set noexpandtab
+
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smarttab
+
+set pastetoggle=<F12>
+autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+
+
+""Map
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
+
+nnoremap j gj
+nnoremap k gk
+nnoremap Y y$
+
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
+
+nmap <leader>w :w!<cr>
+nmap <leader>f :find<cr>
+
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+cmap cwd lcd %:p:h
+cmap cd. lcd %:p:h
+
+vnoremap < <gv
+vnoremap > >gv
+
+
+""Vim Gui
+set go=
+colorscheme desert
+set guifont=Consolas:h11
+"set guifont=Courier\ New\ 12, Arial\ 10
+
+
+""Encoding
+set fileencoding=utf-8
+set fileencodings=uft-8,gbk,gb2312
+
+""Funciton
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
